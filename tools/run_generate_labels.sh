@@ -2,7 +2,7 @@ set -ex
 
 # Number of training instances per label.
 K=8
-gpu_id=0
+gpu_id=6
 
 # Data directory for k-shot splits.
 DATA_DIR="/data/dheeraj/LM-BFF/k-shot"

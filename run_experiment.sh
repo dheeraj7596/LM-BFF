@@ -8,7 +8,7 @@
 # MODEL: pre-trained model name (roberta-*, bert-*), see Transformers model list
 
 # Number of training instances per label
-K=16
+K=8
 
 # Training steps
 MAX_STEP=1000
@@ -100,7 +100,7 @@ esac
 # For medium-sized GPUs (e.g., 2080ti with 10GB memory), they can only take 
 # a maximum batch size of 2 when using large-size models. So we use gradient
 # accumulation steps to achieve the same effect of larger batch sizes.
-REAL_BS=2
+REAL_BS=32
 GS=$(expr $BS / $REAL_BS)
 
 # Use a random number to distinguish different trails (avoid accidental overwriting)

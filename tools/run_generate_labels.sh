@@ -1,24 +1,24 @@
 set -ex
 
 # Number of training instances per label.
-K=16
+K=8
 
 # Data directory for k-shot splits.
-DATA_DIR="data/k-shot"
+DATA_DIR="/data/dheeraj/LM-BFF/k-shot"
 
 # Output directory where results will be written.
-OUTPUT_DIR="my_auto_label_mapping"
+OUTPUT_DIR="/data/dheeraj/LM-BFF/my_auto_label_mapping"
 
 # Pre-trained model name (roberta-*, bert-*), see Transformers.
-MODEL_NAME="roberta-large"
+MODEL_NAME="bert-base-uncased"
 
 # For auto T + L, we first generate automatic templates. Then, for each template, we
 # generate automatic labels. Finally we will train all auto template X auto labels and
 # select the best (based on dev). If we are doing this, then we must specify the auto T
 # results, and load the top n per result.
-LOAD_TEMPLATES="false"
-TEMPLATE_DIR="auto_template/"
-NUM_TEMPLATES=10
+LOAD_TEMPLATES="true"
+TEMPLATE_DIR="/data/dheeraj/LM-BFF/auto_template/"
+NUM_TEMPLATES=2
 
 # Filter options to top K words (conditional) per class.
 K_LIKELY=100
@@ -127,7 +127,7 @@ for TASK in $TASKS; do
                        --k_neighbors $K_NEIGHBORS \
                        --n_pairs $(($N_PAIRS / $NUM_TEMPLATES)) \
                        --max_seq_len 256 \
-                       --per_device_eval_batch_size 16 \
+                       --per_device_eval_batch_size 128 \
                        $TASK_EXTRA
             done
         else
@@ -144,7 +144,7 @@ for TASK in $TASKS; do
                    --k_neighbors $K_NEIGHBORS \
                    --n_pairs $N_PAIRS \
                    --max_seq_len 256 \
-                   --per_device_eval_batch_size 16 \
+                   --per_device_eval_batch_size 128 \
                    $TASK_EXTRA
         fi
     done

@@ -110,7 +110,7 @@ for TASK in $TASKS; do
                 ;;
         esac
 
-        if [[ $LOAD_TEMPLATES = "true" ]]; then
+        if [ $LOAD_TEMPLATES == "true" ]; then
             FILENAME=$TEMPLATE_DIR/${TASK}/$K-${SEED}.sort.txt
             for TEMPLATE in $(head -n $NUM_TEMPLATES $FILENAME); do
                 CUDA_VISIBLE_DEVICES=$gpu_id python tools/generate_labels.py \

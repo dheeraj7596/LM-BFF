@@ -9,6 +9,7 @@
 
 # Number of training instances per label
 K=8
+gpu_id=5
 
 # Training steps
 MAX_STEP=1000
@@ -107,7 +108,7 @@ GS=$(expr $BS / $REAL_BS)
 TRIAL_IDTF=$RANDOM
 DATA_DIR=data/k-shot/$TASK/$K-$SEED
 
-python run.py \
+CUDA_VISIBLE_DEVICES=$gpu_id python run.py \
   --task_name $TASK \
   --data_dir $DATA_DIR \
   --overwrite_output_dir \

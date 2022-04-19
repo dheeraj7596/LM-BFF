@@ -11,7 +11,7 @@ do
             LR=$lr \
             SEED=$seed \
             MODEL=bert-base-uncased \
-            bash run_experiment.sh "--template_path auto_template/SST-2/8-$seed.sort.txt --template_id 0 --demo_filter --demo_filter_model sbert-bert-base"
+            bash run_experiment.sh "--template_path /data/dheeraj/LM-BFF/my_auto_template/SST-2/8-$seed.sort.txt --template_id 0 --demo_filter --demo_filter_model sbert-bert-base"
         done
     done
 done

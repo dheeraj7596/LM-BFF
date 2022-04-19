@@ -2,6 +2,7 @@ set -ex
 
 # Number of training instances per label.
 K=8
+gpu_id=0
 
 # Data directory for k-shot splits.
 DATA_DIR="/data/dheeraj/LM-BFF/k-shot"
@@ -112,7 +113,7 @@ for TASK in $TASKS; do
         if [[ $LOAD_TEMPLATES = "true" ]]; then
             FILENAME=$TEMPLATE_DIR/${TASK}/$K-${SEED}.sort.txt
             for TEMPLATE in $(head -n $NUM_TEMPLATES $FILENAME); do
-                python tools/generate_labels.py \
+                CUDA_VISIBLE_DEVICES=$gpu_id python tools/generate_labels.py \
                        --overwrite_output_dir \
                        --output_dir /tmp/output \
                        --model_name_or_path $MODEL_NAME \
@@ -131,7 +132,7 @@ for TASK in $TASKS; do
                        $TASK_EXTRA
             done
         else
-            python tools/generate_labels.py \
+            CUDA_VISIBLE_DEVICES=$gpu_id python tools/generate_labels.py \
                    --overwrite_output_dir \
                    --output_dir /tmp/output \
                    --model_name_or_path $MODEL_NAME \

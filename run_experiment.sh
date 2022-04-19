@@ -106,7 +106,7 @@ GS=$(expr $BS / $REAL_BS)
 
 # Use a random number to distinguish different trails (avoid accidental overwriting)
 TRIAL_IDTF=$RANDOM
-DATA_DIR=data/k-shot/$TASK/$K-$SEED
+DATA_DIR=/data/dheeraj/LM-BFF/k-shot/$TASK/$K-$SEED
 
 CUDA_VISIBLE_DEVICES=$gpu_id python run.py \
   --task_name $TASK \

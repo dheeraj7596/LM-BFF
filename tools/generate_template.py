@@ -283,7 +283,8 @@ def search_template(model, tokenizer, task_name, k, seed, beam, output_dir, data
         'MNLI': {'contradiction':'No','entailment':'Yes','neutral':'Maybe'},
         'SNLI': {'contradiction':'No','entailment':'Yes','neutral':'Maybe'},
         'QNLI': {'not_entailment':'No','entailment':'Yes'},
-        'RTE': {'not_entailment':'No','entailment':'Yes'}
+        'RTE': {'not_entailment':'No','entailment':'Yes'},
+        'imdb': {'positive': 'good', 'negative': 'bad'}
     }
 
     mapping = map_of_mapping[task_name]

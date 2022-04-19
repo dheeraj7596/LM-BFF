@@ -1,5 +1,5 @@
 task=SST-2
-for template_id in {0..99}
+for template_id in $(seq 0 100)
 do
     for seed in 13 21 42 87 100
     do

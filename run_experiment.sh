@@ -101,7 +101,7 @@ esac
 # For medium-sized GPUs (e.g., 2080ti with 10GB memory), they can only take 
 # a maximum batch size of 2 when using large-size models. So we use gradient
 # accumulation steps to achieve the same effect of larger batch sizes.
-REAL_BS=32
+REAL_BS=128
 GS=$(expr $BS / $REAL_BS)
 
 # Use a random number to distinguish different trails (avoid accidental overwriting)

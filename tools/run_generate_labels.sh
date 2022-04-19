@@ -18,7 +18,7 @@ MODEL_NAME="bert-base-uncased"
 # select the best (based on dev). If we are doing this, then we must specify the auto T
 # results, and load the top n per result.
 LOAD_TEMPLATES="true"
-TEMPLATE_DIR="/data/dheeraj/LM-BFF/auto_template/"
+TEMPLATE_DIR="/data/dheeraj/LM-BFF/my_auto_template"
 NUM_TEMPLATES=2
 
 # Filter options to top K words (conditional) per class.
@@ -110,7 +110,7 @@ for TASK in $TASKS; do
                 ;;
         esac
 
-        if [ $LOAD_TEMPLATES == "true" ]; then
+        if [ "$LOAD_TEMPLATES" = "true" ]; then
             FILENAME=$TEMPLATE_DIR/${TASK}/$K-${SEED}.sort.txt
             for TEMPLATE in $(head -n $NUM_TEMPLATES $FILENAME); do
                 CUDA_VISIBLE_DEVICES=$gpu_id python tools/generate_labels.py \

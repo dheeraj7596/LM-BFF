@@ -15,8 +15,8 @@ K=8
 #    cp data/k-shot/MNLI/$K-42/test_mismatched_sbert-$MODEL.npy  data/k-shot/MNLI/$K-$seed/
 #done
 
-python tools/get_sbert_embedding.py --sbert_model $MODEL --task SST-2
-python tools/get_sbert_embedding.py --sbert_model $MODEL --seed 42 --do_test --task SST-2
+python tools/get_sbert_embedding.py --k 8 --data_dir /data/dheeraj/LM-BFF/k-shot --sbert_model $MODEL --task SST-2
+python tools/get_sbert_embedding.py --k 8 --data_dir /data/dheeraj/LM-BFF/k-shot --sbert_model $MODEL --seed 42 --do_test --task SST-2
 
 for seed in 13 21 87 100
 do

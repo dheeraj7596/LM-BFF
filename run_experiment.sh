@@ -9,7 +9,7 @@
 
 # Number of training instances per label
 K=8
-gpu_id=5
+gpu_id=0
 
 # Training steps
 MAX_STEP=1000

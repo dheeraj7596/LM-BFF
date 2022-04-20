@@ -277,6 +277,8 @@ def main():
     if training_args.no_predict:
         training_args.do_predict = False
 
+    training_args.gradient_accumulation_steps = 1
+
     # Setup logging
     logging.basicConfig(
         format="%(asctime)s - %(levelname)s - %(name)s -   %(message)s",
